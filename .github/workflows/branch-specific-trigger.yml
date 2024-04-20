@@ -1,0 +1,15 @@
+name: Branch Specific Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    - name: Run a script
+      run: echo "This workflow runs only on pushes to the main branch."

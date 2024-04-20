@@ -1,0 +1,15 @@
+name: Scheduled Job Workflow
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  nightly-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    - name: Run Nightly Tasks
+      run: echo "Performing nightly tasks..."
