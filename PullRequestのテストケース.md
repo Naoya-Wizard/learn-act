@@ -8,25 +8,25 @@
 1. GitHubリポジトリ内の`.github/workflows`ディレクトリを用意します（存在しない場合は作成します）。
 2. 次に、以下の内容を含むYAMLファイルを作成します。ファイル名は`pull-request-workflow.yml`などとします。
 
-```yaml
-name: Pull Request Workflow
+    ```yaml
+    name: Pull Request Workflow
 
-on:
-  pull_request:
-    branches:
-      - main
+    on:
+      pull_request:
+        branches:
+          - main
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-    - name: Run Tests
-      run: echo "Running tests..."
-    - name: Build
-      run: echo "Building the application..."
-```
+    jobs:
+      test:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Code
+          uses: actions/checkout@v2
+        - name: Run Tests
+          run: echo "Running tests..."
+        - name: Build
+          run: echo "Building the application..."
+    ```
 
 このファイルは、`main` ブランチへのプルリクエスト時に実行されるジョブを定義しており、シンプルなテストとビルドのステップを含んでいます。実際のプロジェクトでは、ここに必要なビルドコマンドやテストスクリプトを配置します。
 
@@ -34,9 +34,9 @@ jobs:
 
 `act` を使ってこのワークフローをローカルでテストするには、次のコマンドを使用します。このコマンドは、`main`ブランチへのプルリクエストイベントをシミュレートして、対応するワークフローを実行します。
 
-```bash
-act pull_request -W .github/workflows/pull-request-workflow.yml -P ubuntu-latest=catthehacker/ubuntu:act-latest
-```
+  ```bash
+  act pull_request -W .github/workflows/pull-request-workflow.yml -P ubuntu-latest=catthehacker/ubuntu:act-latest
+  ```
 
 - `-W` オプションは特定のワークフローファイルを指定するために使用されます。
 - `-P` オプションは使用するDockerイメージを指定します。
