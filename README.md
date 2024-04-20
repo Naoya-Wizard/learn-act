@@ -1,4 +1,4 @@
 # learn-act
-GitHub Actions をローカルで動かしたい。
+GitHub Actions をローカルでテストしたい。
 
 手順などを残します。
